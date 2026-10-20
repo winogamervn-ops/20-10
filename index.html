@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bí Mật 20/10 💖</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg,
+        #ff4e91, #a445ff, #ff79b0, #7928ca);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ffffff80;
+    border-radius: 30px;
+    background: #ffffff20;
+    backdrop-filter: blur(10px);
+    animation: pulse 1.5s infinite;
+}
+
+h1 {
+    margin: 25px 0 15px;
+    font-size: clamp(34px, 7vw, 65px);
+    line-height: 1.15;
+    text-shadow: 0 0 25px #ffb7e0;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+button {
+    padding: 16px 30px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #ed2783;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px #ffffff80;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+#surprise {
+    display: none;
+    margin-top: 35px;
+    animation: appear 1s ease;
+}
+
+.card {
+    margin: 15px 0;
+    padding: 20px;
+    border: 1px solid #ffffff70;
+    border-radius: 20px;
+    background: #ffffff20;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px #7c125544;
+    animation: slideUp 0.7s both;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.final {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.8;
+    animation: pulse 1.5s infinite;
+}
+
+#effects {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(115vh) rotate(720deg);
+        opacity: .2;
+    }
+}
+
+footer {
+    margin-top: 35px;
+    font-size: 13px;
+    opacity: .85;
+}
+</style>
+</head>
+
+<body>
+
+<div id="effects"></div>
+
+<div class="container">
+    <div class="badge">🔐 TOP SECRET • 20/10</div>
+
+    <h1>Ê NÈ! CÓ ĐIỀU BÍ MẬT 💌</h1>
+
+    <p class="subtitle">
+        Có 7 cô gái siêu đặc biệt đang được gọi tên...<br>
+        Chuẩn bị tinh thần nhận một món quà bất ngờ chưa nào? 👀
+    </p>
+
+    <button id="startBtn" onclick="startSurprise()">
+        💥 BẤM VÀO ĐÂY ĐỂ BÙNG NỔ 💥
+    </button>
+
+    <div id="surprise">
+        <h1>🌷 HAPPY WOMEN'S DAY 🌷</h1>
+        <p class="subtitle">
+            Chúc mừng ngày Phụ nữ Việt Nam 20/10! 🎉<br>
+            Xin trân trọng giới thiệu 7 nàng thơ của ngày hôm nay!
+        </p>
+
+        <div id="cards"></div>
+
+        <div class="final">
+            💖 Chúc 7 bông hoa luôn xinh đẹp! 💖<br>
+            🌸 Vui vẻ hết nấc, hạnh phúc hết mình! 🌸<br>
+            ✨ Mãi là phiên bản tuyệt vời nhất! ✨
+        </div>
+
+        <button onclick="celebrateAgain()">
+            🎆 BÙNG NỔ THÊM LẦN NỮA!
+        </button>
+    </div>
+
+    <footer>
+        Made with ❤️ dành riêng cho 7 cô gái tuyệt vời
+    </footer>
+</div>
+
+<script>
+const girls = [
+    {
+        name: "Quỳnh Như 🌷",
+        wish: "Luôn xinh đẹp, tự tin, gặp thật nhiều may mắn và lúc nào cũng rạng rỡ như ánh mặt trời!"
+    },
+    {
+        name: "Kim Chi 💖",
+        wish: "Chúc bạn luôn vui vẻ, học tập thuận lợi, tiền vào như nước và hạnh phúc ngập tràn!"
+    },
+    {
+        name: "Quỳnh Hương 🦋",
+        wish: "Mong mọi điều tốt đẹp nhất sẽ đến với bạn. Luôn tỏa sáng theo cách riêng của mình nhé!"
+    },
+    {
+        name: "Ngọc Trâm 🌹",
+        wish: "Chúc bạn ngày càng xinh xắn, đáng yêu, luôn được yêu thương và đạt được mọi điều mình muốn!"
+    },
+    {
+        name: "Thu Huyền 🎀",
+        wish: "Chúc bạn luôn cười thật tươi, cuộc sống ngập tràn niềm vui và mỗi ngày đều là một ngày tuyệt vời!"
+    },
+    {
+        name: "Như Hằng ✨",
+        wish: "Mong bạn luôn bình an, may mắn, rực rỡ như những vì sao và thành công trên con đường mình chọn!"
+    },
+    {
+        name: "Như Ý 🌻",
+        wish: "Tên là Như Ý thì mọi chuyện phải như ý! Chúc bạn vạn sự như mơ, muốn gì được nấy!"
+    }
+];
+
+function startSurprise() {
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("surprise").style.display = "block";
+
+    const cards = document.getElementById("cards");
+    cards.innerHTML = "";
+
+    girls.forEach((girl, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.animationDelay = (index * 0.45) + "s";
+
+        const title = document.createElement("h2");
+        title.textContent = "💐 " + girl.name;
+
+        const message = document.createElement("p");
+        message.textContent = girl.wish;
+
+        card.appendChild(title);
+        card.appendChild(message);
+        cards.appendChild(card);
+    });
+
+    celebrate();
+    setTimeout(celebrate, 500);
+    setTimeout(celebrate, 1200);
+}
+
+function celebrate() {
+    const effects = document.getElementById("effects");
+    const colors = [
+        "#ffec99", "#ff4d9d", "#ffffff",
+        "#72f1ff", "#c7ff7b", "#ff9b42",
+        "#d9a7ff"
+    ];
+
+    // Pháo giấy rơi khắp màn hình
+    for (let i = 0; i < 130; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.width = (6 + Math.random() * 8) + "px";
+        piece.style.height = (9 + Math.random() * 10) + "px";
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+        piece.style.borderRadius = Math.random() > .5 ? "50%" : "2px";
+        piece.style.animationDuration = (2 + Math.random() * 3) + "s";
+        effects.appendChild(piece);
+        setTimeout(() => piece.remove(), 5500);
+    }
+
+    // Trái tim bay tung tăng
+    for (let i = 0; i < 35; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = ["💖", "💕", "💗", "🌸", "✨", "💝"]
+            [Math.floor(Math.random() * 6)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+        effects.appendChild(heart);
+        setTimeout(() => heart.remove(), 7500);
+    }
+}
+
+function celebrateAgain() {
+    celebrate();
+    setTimeout(celebrate, 400);
+    setTimeout(celebrate, 900);
+}
+</script>
+
+</body>
+</html>
